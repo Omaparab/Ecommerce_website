@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/main/signup.css' %}">
+</head>
+
+<body style="background-image: url('../../static/img/login.png'); 
+             background-repeat: no-repeat;
+             background-size: cover;">
+
+<form method="post" onsubmit="return signup()">
+    {% csrf_token %}
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <p id="result" style="text-align: center; color: red;"></p>
+
+        <div>
+            {% for message in messages %}
+            <p style="text-align: center; color: red;" >{{message}}</p>
+            {% endfor %}
+        </div>
+
+        <input type="text" id="signupUsername" placeholder="Username (4 characters)" name="Username" required >
+        <input type="email" id="signupEmail" placeholder="Email" name="Email" required >
+
+        <div class="password-container">
+            <input type="password" id="signupPassword" placeholder="Password (6 characters)" name="Password" required>
+            <span class="password-toggle" onclick="togglePassword('signupPassword')">👁</span>
+        </div>
+
+        <div class="password-container">
+            <input type="password" id="confirmSignupPassword" placeholder="Confirm Password (6 characters)" name="Cpassword" required>
+            <span class="password-toggle" onclick="togglePassword('confirmSignupPassword')">👁</span>
+        </div>
+
+        <button type="submit">Sign Up</button>
+
+        <div class="switch-link">
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</form>
+
+    <script>
+
+        function togglePassword(id) {
+            const passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
+        function signup() {
+            //
+        }
+
+    </script>
+</body>
+</html>

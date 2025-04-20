@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/main/proceed.css' %}">
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Order Confirmed!</h1>
+        <p>Thank you for your purchase. Your order has been placed successfully.</p>
+        <div class="order-summary">
+            <p>Your order ID is: {{ ID }}</p>
+            <p></p>
+            <p>Please collect your items from our accountant by providing the order ID.</p>
+        </div>
+        <a href="{% url 'home' %}" class="home-button">Continue Shopping</a>
+    </div>
+</body>
+</html>

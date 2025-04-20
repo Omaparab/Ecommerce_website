@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.confirmation-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.confirmation-container h1 {
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.confirmation-container p {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.order-summary {
+    margin: 20px 0;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.order-summary h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.delivery-info {
+    font-size: 14px;
+    color: #555;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #218838;
+}

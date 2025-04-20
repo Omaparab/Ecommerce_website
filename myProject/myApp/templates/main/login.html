@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/main/signup.css' %}">
+</head>
+<body style="background-image: url('../../static/img/login.png'); 
+             background-repeat: no-repeat;
+             background-size: cover;"
+         onload="setFlag()">
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+    <div class="container">
+
+        <h2>Login</h2>
+        
+        <div>
+            {% for message in messages %}
+            <p style="text-align: center; color: red;" >{{message}}</p>
+            {% endfor %}
+        </div>
+
+        <input type="email" id="loginEmail" placeholder="Email" name="Email" required>
+        
+        <div class="password-container">
+            <input type="password" id="loginPassword" placeholder="Password" name="Password" required>
+            <span class="password-toggle" onclick="togglePassword('loginPassword')">👁</span>
+        </div>
+
+
+        <button>Login</button>
+        <div class="switch-link">
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+        </div>
+    </div>
+</form>
+
+    <script>
+        function togglePassword(id) {
+            const passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/products/punch.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Our Logo">
+            </div>
+            <div class="search-bar">
+                <input type="search" placeholder="Find Drafter, Calculator, and more...">
+            </div>
+            <div class="actions">
+                <div class="department-selector">
+                    <label for="departments" style="margin-right: 10px;">Departments:</label>
+                    <select id="departments" style="-webkit-appearance: none; -moz-appearance: none; appearance: none;">
+                        <option value="cmpn">CMPN</option>
+                        <option value="it">IT</option>
+                        <option value="extc">EXTC</option>
+                        <option value="mechanical">MECHANICAL</option>
+                        <option value="electrical">ELECTRICAL</option>
+                    </select>
+                </div>
+                <br><br>
+                
+                <div class="sell-btn">
+                    <button>+ SELL</button>
+                </div>
+            </div>
+            
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">ALL CATEGORIES</a>
+                </li>
+                <li>
+                    <a href="#">Mechanical Equipments</a>
+                    <select>
+                        <option value="drafter">Drafter</option>
+                        <option value="scale">Scale</option>
+                        <option value="geometrybox">Geometry Box</option>
+                        <option value="workequipment">Workshop Equipment</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Electrical Equipments</a>
+                    <select>
+                        <option value="wires">Wires</option>
+                        <option value="sensor">Sensor</option>
+                        <option value="socket">Socket</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Basic Equipments</a>
+                </li>
+                <li>
+                    <a href="#">Notebooks</a>
+                    <select>
+                        <option value="maths">Maths</option>
+                        <option value="dsgt">Dsgt</option>
+                        <option value="aoa">Aoa</option>
+                        <option value="dlcoa">Dlcoa</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Books</a>
+                    <select>
+                        <option value="kumbhojkar">Kumbhojkar</option>
+                        <option value="rema">Rema Thareja</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">For Sale: Equipments</a>
+                </li>
+                <li>
+                    <a href="#">For Rent: Equipments</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Detail Section -->
+    <main>
+        <section class="product-detail">
+            <!-- Product Image Section -->
+            <div class="product-image">
+                <img src="{% static 'img/punchmachine.png' %}" alt="Heavy-Duty Punching Machine">
+            </div>
+
+            <!-- Product Information Section -->
+            <div class="product-info">
+                <h1>Heavy-Duty Punching Machine</h1>
+                <p class="price">₹ 120 <span class="old-price">₹ 𝟤̶𝟢̶𝟢̶</span></p>
+                <p class="availability"><strong>Availability:</strong> In Stock</p>
+                <p class="seller"><strong>Seller:</strong> Borivali, West</p>
+                <p class="ratings">
+                    <strong>Rating:</strong> 
+                    <span>★★★★☆</span> 
+                    (89 customer reviews)
+                </p>
+                <hr>
+
+                <!-- Product Description -->
+                <div class="description">
+                    <h2>Product Description</h2>
+                    <p>The Heavy-Duty Punching Machine is designed to perform punching tasks in various materials like paper, leather, and plastic. Engineered for durability, it is a reliable tool for offices, workshops, and other professional environments.</p>
+                    <ul>
+                        <li>Brand: Heavy Duty Co.</li>
+                        <li>Type: Punching Machine</li>
+                        <li>Weight: 500g, sturdy build</li>
+                        <li>Materials: Paper, leather, plastic</li>
+                        <li>Ideal for: Workshops, offices, and industrial use</li>
+                        <li>Durability: Engineered for long-term performance</li>
+                    </ul>
+                </div>
+
+                <!-- Additional Features -->
+                <div class="features">
+                    <h3>Additional Features</h3>
+                    <ul>
+                        <li>Multiple punching sizes</li>
+                        <li>Adjustable punching depth</li>
+                        <li>Ergonomic handle design</li>
+                        <li>Metal construction for enhanced durability</li>
+                    </ul>
+                </div>
+            
+                <!-- Purchase section  -->
+                <div class="purchase-section">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" value="1" min="1">
+                    
+                    <!-- Add to Cart button for the punching machine -->
+                    <button class="add-to-cart-btn" data-product-id="punch123" data-product-name="Heavy-Duty Punching Machine" data-product-price="120" data-product-image="punching_machine.png">
+                        Add to Cart
+                    </button>
+                    {% if login_visited %}
+                        <a href="{% url 'cart' %}">View Cart</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" onclick="nologin()">View Cart</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Copyright © 2024 All rights reserved | Ecom</p>
+    </footer>
+
+    <script>
+        function nologin(){
+            alert('Login to buy our products!!')
+        }
+
+        // Function to add product to the cart
+        function addToCart(product) {
+            // Retrieve existing cart from localStorage or initialize an empty cart
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            // Check if the product already exists in the cart
+            const existingProduct = cart.find(item => item.id === product.id);
+            if (existingProduct) {
+                // If it exists, increase the quantity
+                existingProduct.quantity += product.quantity;
+            } else {
+                // If it's a new product, add it to the cart
+                cart.push(product);
+            }
+        
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        
+            // Show a confirmation message
+            alert('Product added to cart!');
+        }
+        
+        // Attach event listener to the "Add to Cart" button
+        document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            const productName = this.getAttribute('data-product-name');
+            const productPrice = parseFloat(this.getAttribute('data-product-price'));
+            const productImage = this.getAttribute('data-product-image');
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // Ensure quantity is greater than zero
+            if (quantity > 0) {
+                // Create a product object
+                const product = {
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: quantity
+                };
+        
+                // Call the addToCart function to store the product in localStorage
+                addToCart(product);
+            } else {
+                alert('Please enter a valid quantity.');
+            }
+        });
+    </script>
+        
+</body>
+
+</html>

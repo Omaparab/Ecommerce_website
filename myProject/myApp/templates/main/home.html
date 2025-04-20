@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Reselling</title>
+    <link rel="stylesheet" href="{% static 'css/main/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Our Logo">
+            </div>
+            <div class="search-bar">
+                <input type="search" placeholder="Find Drafter, Calculator, and more...">
+            </div>
+            <div class="actions">
+                <div class="department-selector">
+                    <label for="departments" style="margin-right: 10px;">Departments:</label>
+                    <select id="departments" style="-webkit-appearance: none; -moz-appearance: none; appearance: none;">
+                        <option value="cmpn">CMPN</option>
+                        <option value="it">IT</option>
+                        <option value="extc">EXTC</option>
+                        <option value="mechanical">MECHANICAL</option>
+                        <option value="electrical">ELECTRICAL</option>
+                    </select>
+                </div>
+                <br><br>
+                
+                <div class="login">
+
+                    {% if login_visited %}
+                    {% for message in messages %}
+                    <a href="{% url 'logout_confirmation' %}"> {{message}}</a>
+                    {% endfor %}
+                    
+                    {% else %}
+                    {% for message in messages %}
+                    <a href="{% url 'login' %}"> {{message}}</a>
+                    {% endfor %}
+                    {% endif %}    
+
+                </div>
+                <div class="sell-btn">
+                    <button>+ SELL</button>
+                </div>
+            </div>
+        </div>     
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">ALL CATEGORIES</a>
+                </li>
+                <li>
+                    <a href="#">Mechanical Equipments</a>
+                    <select>
+                        <option value="drafter">Drafter</option>
+                        <option value="scale">Scale</option>
+                        <option value="geometrybox">Geometry Box</option>
+                        <option value="workequipment">Workshop Equipment</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Electrical Equipments</a>
+                    <select>
+                        <option value="wires">Wires</option>
+                        <option value="sensor">Sensor</option>
+                        <option value="socket">Socket</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Basic Equipments</a>
+                </li>
+                <li>
+                    <a href="#">Notebooks</a>
+                    <select>
+                        <option value="maths">Maths</option>
+                        <option value="dsgt">Dsgt</option>
+                        <option value="aoa">Aoa</option>
+                        <option value="dlcoa">Dlcoa</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Books</a>
+                    <select>
+                        <option value="kumbhojkar">Kumbhojkar</option>
+                        <option value="rema">Rema Thareja</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">For Sale: Equipments</a>
+                </li>
+                <li>
+                    <a href="#">For Rent: Equipments</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    
+        <section class="recommendations">
+            <h2>Fresh recommendations</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="{% static 'img/drafter.png' %}"
+                        alt="Product 1">
+                    <p class="actualprice">MRP : ₹ 𝟪̶𝟢̶𝟢̶ </p>    
+                    <p class="price">₹ 500 </p>
+                    <p class="title">Drafter for Engineering Graphics</p>
+                    <p class="location">Borivali, West</p>
+                    <p class="date">Jul 23</p>
+                    <div class="view-btn">
+                        <a href="{% url 'drafter' %}"><button>View Product</button></a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/calci.png' %}" alt="Product 2">
+                    <p class="actualprice">MRP : ₹ 𝟤̶𝟧̶𝟢̶𝟢̶</p>
+                    <p class="price">₹ 1000</p>
+                    <p class="title">Casio Scientific Calculator</p>
+                    <p class="location">Borivali, West</p>
+                    <p class="date">Aug 09</p>
+                    <div class="view-btn">
+                        <a href="{% url 'calci' %}"><button>View Product</button></a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/Drawing Sheet Holder.png' %}" alt="Product 3">
+                    <p class="actualprice">MRP : ₹ 𝟥̶𝟧̶𝟢̶</p>
+                    <p class="price">₹ 200</p>
+                    <p class="title">Drawing Sheet Holder</p>
+                    <p class="location">Borivali, West</p>
+                    <p class="date">Today</p>
+                    <div class="view-btn">
+                        <a href="{% url 'sheetholder' %}"><button>View Product</button></a>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/Rasp_pi_kit.png' %}" alt="Product 4">
+                    <p class="actualprice">MRP : ₹ 𝟩̶𝟢̶𝟢̶𝟢̶</p>
+                    <p class="price">₹ 5000</p>
+                    <p class="title">Raspberry Pi Kit</p>
+                    <p class="location">Borivali, West</p>
+                    <p class="date">Today</p>
+                    <div class="view-btn">
+                        <a href="{% url 'raspberry' %}"><button>View Product</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>
+<br>
+
+<section class="recommendations">
+    <h2>Latest Arrival</h2>
+    <div class="product-list">
+        <div class="product">
+            <img src="{% static 'img/geometry.png' %}"
+                alt="Product 1">
+            <p class="actualprice">MRP : ₹ 𝟥̶𝟧̶𝟢̶</p>
+            <p class="price">₹ 200</p>
+            <p class="title">Geometry Box Set-  includes a compass, protractor, ruler, set squares, and dividers</p>
+            <p class="location">Borivali, West</p>
+            <p class="date">Jul 23</p>
+            <div class="view-btn">
+                <a href="{% url 'geometry' %}"><button>View Product</button></a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{% static 'img/stapler.png' %}" alt="Product 2">
+            <p class="actualprice">MRP : ₹ 𝟣̶𝟧̶𝟢̶</p>
+            <p class="price">₹ 100</p>
+            <p class="title">Stapler, Compact and Durable, 20-Sheet Capacity, Ergonomic Design, Smooth Stapling, Works with Standard Staples, Ideal for Office, Home, and School Use - Blue.</p>
+            <p class="location">Borivali, West</p>
+            <p class="date">Aug 09</p>
+            <div class="view-btn">
+                <a href="{% url 'stapler' %}"><button>View Product</button></a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{% static 'img/punchmachine.png' %}" alt="Product 3">
+            <p class="actualprice">MRP : ₹𝟤̶𝟢̶𝟢̶</p>
+            <p class="price">₹ 120</p>
+            <p class="title">Heavy-Duty Punching Machine,punching in various materials like paper, leather, plastic-Engineered for durability</p>
+            <p class="location">Borivali, West</p>
+            <p class="date">Today</p>
+            <div class="view-btn">
+                <a href="{% url 'punch' %}"><button>View Product</button></a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{% static 'img/folder.png' %}" alt="Product 4">
+            <p class="actualprice">MRP : ₹𝟤̶𝟧̶𝟢̶</p>
+            <p class="price">₹ 110</p>
+            <p class="title">Folder- Engineered for durability- long lasting- Blue</p>
+            <p class="location">Borivali, West</p>
+            <p class="date">Today</p>
+            <div class="view-btn">
+                <a href="{% url 'folder' %}"><button>View Product</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</section>
+<br><br>
+
+<section id="about-contact">
+    <div class="about-us">
+        <h1>ABOUT US</h1>
+        <p> Welcome to our website,your one-stop destination for all your shopping needs.Our mission is to provide a high-quality online shopping experience for all of you, A shopping website is an online platform that facilitates the buying and selling of products and services. These websites can include multimedia elements, ecommerce functionalities like shopping carts and payment gateways, and interactive features.Our website offers large amount and good quality of products which are accessable worls wide and reviews by various experts.</p>
+    </div>
+    <hr>
+    <div class="contact-us">
+        <h2>CONTACT US</h2>
+        <p>Phone: +91 9833348245</p>
+        <p>Email: <a href="mailto:selzsmart@gmail.com">selzsmart@gmail.com</a></p>
+        <p>Address: Mumbai, India - 400104</p>
+
+        <!-- Social Media and Contact Icons -->
+        <div class="contact-icons">
+            <a href="mailto:studysmart@gmail.com" class="icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://twitter.com" class="icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" class="icon"><i class="fab fa-instagram"></i></a>
+            <a href="tel:+1234567890" class="icon"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+<p>Copyright © 2024 All rights reserved | Ecom</p>
+</footer>
+
+</body>
+
+
+
+</html>
